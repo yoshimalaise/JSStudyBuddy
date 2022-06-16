@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "JSStudyBuddy",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

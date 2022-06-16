@@ -1,5 +1,7 @@
 {
   "name": "JSStudyBuddy",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
