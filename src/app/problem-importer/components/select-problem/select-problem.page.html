@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Pick problem set
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id='cameraScreen' [fullscreen]="true">
+
+  <div id="container">
+    <ion-list id="problemsetsList">
+      <ion-item *ngFor="let filename of fileNames$ | async" (click)="selectFile(filename)">
+        <ion-label>{{filename}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <div id="importSection">
+      <div id="importDivider">
+        <hr />
+        <div class="importDividerText">or</div>
+        <hr />
+      </div>
+      <ion-button id="btnImportDataset" (click)="importNewDataset()" color="primary">Import a new dataset</ion-button>
+    </div>
+   </div>
+</ion-content>

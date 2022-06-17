@@ -1,0 +1,51 @@
+#container {
+  width: 100%;
+  height: calc(100vh - 100px);
+}
+
+#container a {
+  text-decoration: none;
+}
+
+hr {
+  flex-grow: 4;
+  background-color: azure;
+  color: azure;
+  width: 100%;
+}
+
+#importDivider {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+} 
+
+.importDividerText {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: -3px;
+}
+
+#btnImportDataset {
+  width: 96%;
+  margin-left: 2%;
+}
+
+#problemsetsList {
+  flex-grow: 10;
+  min-height: calc(100vh - 200px);
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+}
+
+#container {
+  background: transparent none !important;
+}
+
+#cameraScreen {
+  background: transparent none !important;
+}
