@@ -46,6 +46,7 @@ export class ProblemSetLoaderService {
       encoding: Encoding.UTF8,
       recursive: false
     });
+    this.scanForFiles();
   }
 
   private async verifyIfExists(dirname) {

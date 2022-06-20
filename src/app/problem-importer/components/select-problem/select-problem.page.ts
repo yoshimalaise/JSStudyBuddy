@@ -23,13 +23,13 @@ export class SelectProblemPage {
     try {
       const scanData = await this.barcodeScanner.scan();
       if (scanData.text.startsWith('http')) {
-        const data = await (await fetch(scanData.text,  {
+        const reqRes = await fetch(scanData.text,  {
           method: 'GET',
           headers: {
-            'Content-Type': 'application/json',
-            'Bypass-Tunnel-Reminder':'true'
+            'Bypass-Tunnel-Reminder': 'true'
           }
-        })).json();
+        });
+        const data = await reqRes.json();
         this.problemSetLoaderService.persistProblemset(prompt('Collection name') , data);
       }
     } catch (ex) {
