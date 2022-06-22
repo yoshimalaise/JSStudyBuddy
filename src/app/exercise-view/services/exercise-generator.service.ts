@@ -10,6 +10,7 @@ import { ParsonsGeneratorService } from './parsons-generator.service';
 })
 export class ExerciseGeneratorService {
   generators: ExGenerator[] = [];
+  currCodeObject: CodeObject;
 
   constructor(parsons: ParsonsGeneratorService) {
     this.generators =  [parsons];
@@ -30,6 +31,17 @@ export class ExerciseGeneratorService {
    */
   private determineNext(): CodeObject {
     const codeObjects = state.codeObjects;
-    return codeObjects[Math.floor((Math.random()*codeObjects.length))];
+    // The max leitner box is 5 so there is always 1 entry
+    // cards start in box one so at most there are 5 entries
+    const idxs = [];
+    for (let i = 0; i < codeObjects.length; i++) {
+      const obj = codeObjects[i];
+      for (let j = 0; j < 6 - obj.leitner_box; j++) {
+        idxs.push(i);
+      }
+    }
+    const randomIdx = idxs[Math.floor((Math.random() * idxs.length))];
+    this.currCodeObject = codeObjects[randomIdx];
+    return this.currCodeObject;
   }
 }

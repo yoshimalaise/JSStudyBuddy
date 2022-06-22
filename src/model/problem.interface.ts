@@ -1,6 +1,6 @@
 export interface CodeObject {
   type: CodeObjectType;
-  leitnerBox: number;
+  leitner_box: number;
 }
 
 export enum CodeObjectType {

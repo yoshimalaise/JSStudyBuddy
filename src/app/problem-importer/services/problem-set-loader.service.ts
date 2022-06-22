@@ -38,6 +38,11 @@ export class ProblemSetLoaderService {
     const data = JSON.parse(f.data);
     this.allProblems$.next(data.codeObjects);
     state.codeObjects = data.codeObjects;
+    state.currProblemSet = name;
+  }
+
+  async persistCurrent() {
+    await this.persistProblemset(state.currProblemSet, state.codeObjects);
   }
 
   async persistProblemset(name: string, data: any) {

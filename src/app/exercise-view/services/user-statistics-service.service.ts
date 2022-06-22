@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Exercise } from 'src/model/exercise.interface';
 import { UserEntry } from 'src/model/user-statistics.interface';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { ExerciseGeneratorService } from './exercise-generator.service';
+import { ProblemSetLoaderService } from 'src/app/problem-importer/services/problem-set-loader.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class UserStatisticsService {
   private entries: UserEntry[] = [];
   private dirname = 'user-stats';
 
-  constructor() {
+  constructor(private exService: ExerciseGeneratorService, private problemSetService: ProblemSetLoaderService) {
     this.load();
    }
 
@@ -20,7 +22,12 @@ export class UserStatisticsService {
       duration,
       timestamp: new Date()
     });
-    this.persist();
+    await this.persist();
+    const codeObj = this.exService.currCodeObject;
+    if (codeObj.leitner_box < 5) {
+      codeObj.leitner_box++;
+    }
+    await this.problemSetService.persistCurrent();
   }
 
   getEntriesFromToday(): UserEntry[] {
