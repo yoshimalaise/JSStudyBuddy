@@ -42,7 +42,7 @@ export class ProblemSetLoaderService {
   }
 
   async persistCurrent() {
-    await this.persistProblemset(state.currProblemSet, state.codeObjects);
+    await this.persistProblemset(state.currProblemSet, {codeObjects: state.codeObjects});
   }
 
   async persistProblemset(name: string, data: any) {
