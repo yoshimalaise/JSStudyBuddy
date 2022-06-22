@@ -1,6 +1,16 @@
 <div class="container">
-  <ion-progress-bar color="primary" [value]="percentageFilled"></ion-progress-bar>
 
+  <div class="progress-wrapper">
+    <div class="current">{{ todayCount }}/{{ dailyGoal }}</div>
+    <round-progress
+      [[responsive]="true" 
+      [current]="todayCount" 
+      [max]="dailyGoal"
+      [duration]="1500"
+      [animationDelay]="300"
+      [background]="'#bbb'"
+    ></round-progress>
+  </div>
 
-  <ion-label color="primary" class="ion-text-wrap">{{message}}</ion-label>
+  <ion-label color="primary" class="ion-text-wrap message">{{message}}</ion-label>
 </div>

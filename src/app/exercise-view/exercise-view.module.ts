@@ -6,6 +6,7 @@ import { ExerciseComponent } from './components/exercise-component/exercise-comp
 import { ParsonsComponent } from './components/parsons/parsons.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ProgressComponent } from './components/progress/progress.component';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
 @NgModule({
   declarations: [ExerciseComponent, ParsonsComponent, ProgressComponent],
@@ -15,6 +16,7 @@ import { ProgressComponent } from './components/progress/progress.component';
     FormsModule,
     IonicModule,
     ScrollingModule,
+    RoundProgressModule
   ]
 })
 export class ExerciseViewModule { }
