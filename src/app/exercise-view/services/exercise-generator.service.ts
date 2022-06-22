@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Exercise } from 'src/model/exercise.interface';
 import { CodeObject } from 'src/model/problem.interface';
 import { state } from 'src/state/state';
+import { CommentSlotGeneratorService } from './comment-slot-generator.service';
 import { ExGenerator } from './generator.interface';
 import { ParsonsGeneratorService } from './parsons-generator.service';
 
@@ -12,8 +13,8 @@ export class ExerciseGeneratorService {
   generators: ExGenerator[] = [];
   currCodeObject: CodeObject;
 
-  constructor(parsons: ParsonsGeneratorService) {
-    this.generators =  [parsons];
+  constructor(parsons: ParsonsGeneratorService, comments: CommentSlotGeneratorService) {
+    this.generators =  [parsons, comments];
    }
 
   nextExercise(): Exercise {

@@ -7,9 +7,10 @@ import { ParsonsComponent } from './components/parsons/parsons.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ProgressComponent } from './components/progress/progress.component';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { CommentSlotsComponent } from './components/comment-slots/comment-slots.component';
 
 @NgModule({
-  declarations: [ExerciseComponent, ParsonsComponent, ProgressComponent],
+  declarations: [ExerciseComponent, ParsonsComponent, ProgressComponent, CommentSlotsComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,

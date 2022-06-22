@@ -1,0 +1,11 @@
+<div class="code-line" *ngFor="let el of elements; let i = index">
+  <snippet-highlight *ngIf="el.type === 'code'" class="snippet" theme="dark" language="javascript" [content]="el.body"></snippet-highlight>
+
+  <ion-list *ngIf="el.type === 'comment'">
+    <ion-item>
+      <ion-select (ionChange)="handleSelect($event, i)" interface="action-sheet" class="dropdown" placeholder="Select comment">
+        <ion-select-option *ngFor="let c of comments" [value]="c.id">{{ c.body }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</div>

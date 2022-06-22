@@ -9,6 +9,7 @@
 <ion-content [fullscreen]="true">
   <!--include all exercise views here with the correct *ngIf's-->
   <app-parsons *ngIf="currExercise?.exerciseType === 'parsons'" class="exercise" [exercise]="currExercise" (doneEvent)="userFinished()"></app-parsons>
+  <app-comment-slots *ngIf="currExercise?.exerciseType === 'commentSlot'" class="exercise" [exercise]="currExercise" (doneEvent)="userFinished()"></app-comment-slots>
 
 
 
