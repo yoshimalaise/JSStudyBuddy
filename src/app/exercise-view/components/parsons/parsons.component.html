@@ -4,7 +4,7 @@
     <!-- The reorder gesture is disabled by default, enable it to drag and drop items -->
     <ion-reorder-group disabled="false" *ngIf="exercise" (ionItemReorder)="onReorder($event)">
       <!-- Default reorder icon, end aligned items -->
-      <ion-item *ngFor="let line of exercise.codeLines">
+      <ion-item class="code-item" *ngFor="let line of exercise.codeLines">
         <ion-label class="code-line">
           <snippet-highlight class="snippet" theme="dark" language="javascript" [content]="line.content"></snippet-highlight>
         </ion-label>

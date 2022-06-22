@@ -24,7 +24,7 @@ export class ProgressComponent implements OnInit {
       this.message = `Good job! You have reached your daily goal of ${this.dailyGoal} exercises!`;
     } else {
       const remaining = this.dailyGoal - this.todayCount;
-      this.message = `Complete ${remaining} more ${remaining === 1 ? 'exercise' : 'exercises'} to complete you goal!`;
+      this.message = `Complete ${remaining} more ${remaining === 1 ? 'exercise' : 'exercises'} to complete your goal!`;
     }
   }
 
