@@ -7,5 +7,25 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!--include all exercise views here with the correct *ngIf's-->
   <app-parsons *ngIf="currExercise?.exerciseType === 'parsons'" class="exercise" [exercise]="currExercise" (doneEvent)="userFinished()"></app-parsons>
+
+
+
+  <!--Here starts the model in between exercises-->
+  <ion-modal trigger="open-modal" (willDismiss)="next()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Progress</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="next()" [strong]="true">Continue</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <app-progress></app-progress>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>

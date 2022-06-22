@@ -23,9 +23,15 @@ export class UserStatisticsService {
     this.persist();
   }
 
+  getEntriesFromToday(): UserEntry[] {
+    const todayStr = (new Date()).toISOString().split('T')[0];
+    return this.entries.filter(e => e.timestamp.toISOString().split('T')[0] === todayStr);
+  }
+
   private async load() {
     if (!this.verifyIfExists(this.dirname)) {
       const dir = await Filesystem.mkdir({ path: this.dirname, recursive: true, directory: Directory.Data });
+      await this.persist();
     }
 
     const f = await Filesystem.readFile({
@@ -35,7 +41,7 @@ export class UserStatisticsService {
     });
 
     const data = JSON.parse(f.data);
-    this.entries = data.entries;
+    this.entries = data.entries.map(e => ({...e, timestamp: new Date(e.timestamp)}));
   }
 
   private async persist() {
@@ -44,7 +50,7 @@ export class UserStatisticsService {
         data: JSON.stringify({entries: this.entries}),
         directory: Directory.Data,
         encoding: Encoding.UTF8,
-        recursive: false
+        recursive: true
       });
   }
 

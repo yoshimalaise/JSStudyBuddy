@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ProblemImporterModule } from './problem-importer/problem-importer.module';
 
-
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { ExerciseViewModule } from './exercise-view/exercise-view.module';
 

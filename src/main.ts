@@ -4,6 +4,7 @@ import { defineCustomElements } from '@ionic/pwa-elements/loader';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import * as snippetHighlight from 'snippet-highlight/dist/loader';
+import * as circleProgress from 'simple-circular-progress';
 
 if (environment.production) {
   enableProdMode();
@@ -16,3 +17,4 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 // Call the element loader after the platform has been bootstrapped
 defineCustomElements(window);
 snippetHighlight.defineCustomElements(window);
+// circleProgress.defineCustomElements(window);

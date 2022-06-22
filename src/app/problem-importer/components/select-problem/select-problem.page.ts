@@ -43,8 +43,8 @@ export class SelectProblemPage {
     }
   }
 
-  selectFile(name: string) {
-    this.problemSetLoaderService.selectProblemSet(name);
+  async selectFile(name: string) {
+    await this.problemSetLoaderService.selectProblemSet(name);
     this.router.navigate(['exercise']);
   }
 

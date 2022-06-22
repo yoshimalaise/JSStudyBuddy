@@ -5,16 +5,16 @@ import { IonicModule } from '@ionic/angular';
 import { ExerciseComponent } from './components/exercise-component/exercise-component.component';
 import { ParsonsComponent } from './components/parsons/parsons.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-
+import { ProgressComponent } from './components/progress/progress.component';
 
 @NgModule({
-  declarations: [ExerciseComponent, ParsonsComponent],
+  declarations: [ExerciseComponent, ParsonsComponent, ProgressComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ScrollingModule
+    ScrollingModule,
   ]
 })
 export class ExerciseViewModule { }
