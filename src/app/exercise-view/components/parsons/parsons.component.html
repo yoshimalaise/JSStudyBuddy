@@ -1,0 +1,17 @@
+
+
+
+    <!-- The reorder gesture is disabled by default, enable it to drag and drop items -->
+    <ion-reorder-group disabled="false" *ngIf="exercise" (ionItemReorder)="onReorder($event)">
+      <!-- Default reorder icon, end aligned items -->
+      <ion-item *ngFor="let line of exercise.codeLines">
+        <ion-label class="code-line">
+          <snippet-highlight class="snippet" theme="dark" language="javascript" [content]="line.content"></snippet-highlight>
+        </ion-label>
+        <ion-reorder slot="end">
+          <ion-icon class="icon-correct" *ngIf="line.currentLineNumber === line.correctLineNumber" name="checkbox-outline"></ion-icon>
+          <ion-icon name="move-outline" *ngIf="line.currentLineNumber !== line.correctLineNumber" ></ion-icon>
+        </ion-reorder>
+      </ion-item>
+
+    </ion-reorder-group>

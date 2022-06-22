@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ExerciseComponent } from './exercise-view/components/exercise-component/exercise-component.component';
 import { SelectProblemPage } from './problem-importer/components/select-problem/select-problem.page';
 
 const routes: Routes = [
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'select-problemset',
     component: SelectProblemPage
+  },
+  {
+    path: 'exercise',
+    component: ExerciseComponent
   }
 ];
 

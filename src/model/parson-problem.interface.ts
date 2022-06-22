@@ -1,14 +1,13 @@
-import { Problem } from './problem.interface';
+import { CodeObject } from './problem.interface';
 
-export interface ParsonsProblem extends Problem {
+export interface FunctionCodeObject extends CodeObject {
   filename: string;
   totalLines: number;
-  lines: ParsonsLine[];
+  lines: FunctionLine[];
 }
 
 
-export interface ParsonsLine {
-  currentLineNumber: number;
+export interface FunctionLine {
    // eslint-disable-next-line @typescript-eslint/naming-convention
   line_number: number;
    // eslint-disable-next-line @typescript-eslint/naming-convention

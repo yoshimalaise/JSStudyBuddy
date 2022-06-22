@@ -1,8 +1,8 @@
-export interface Problem {
-  problemType: ProblemType;
+export interface CodeObject {
+  type: CodeObjectType;
   leitnerBox: number;
 }
 
-export enum ProblemType {
-  parsons = 'parsons'
+export enum CodeObjectType {
+  function = 'function'
 }

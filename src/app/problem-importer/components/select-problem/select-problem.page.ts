@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProblemSetLoaderService } from '../../services/problem-set-loader.service';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { SpinnerDialog } from '@awesome-cordova-plugins/spinner-dialog';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +14,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 export class SelectProblemPage {
   fileNames$: Observable<string[]>;
 
-  constructor(private problemSetLoaderService: ProblemSetLoaderService, private barcodeScanner: BarcodeScanner) {
+  constructor(private problemSetLoaderService: ProblemSetLoaderService, private barcodeScanner: BarcodeScanner,
+    private router: Router) {
     this.fileNames$ = problemSetLoaderService.allFiles$;
   }
 
@@ -23,6 +26,7 @@ export class SelectProblemPage {
     try {
       const scanData = await this.barcodeScanner.scan();
       if (scanData.text.startsWith('http')) {
+        SpinnerDialog.show(undefined, 'Importing code objects, please wait');
         const reqRes = await fetch(scanData.text,  {
           method: 'GET',
           headers: {
@@ -31,14 +35,17 @@ export class SelectProblemPage {
         });
         const data = await reqRes.json();
         this.problemSetLoaderService.persistProblemset(prompt('Collection name') , data);
+        SpinnerDialog.hide();
       }
     } catch (ex) {
       alert(ex);
+      SpinnerDialog.hide();
     }
   }
 
   selectFile(name: string) {
     this.problemSetLoaderService.selectProblemSet(name);
+    this.router.navigate(['exercise']);
   }
 
 }

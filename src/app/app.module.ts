@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -10,10 +10,13 @@ import { ProblemImporterModule } from './problem-importer/problem-importer.modul
 
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { ExerciseViewModule } from './exercise-view/exercise-view.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ProblemImporterModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ProblemImporterModule,
+    ExerciseViewModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BarcodeScanner],
   bootstrap: [AppComponent],
 })

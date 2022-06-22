@@ -31,8 +31,9 @@ hr {
 }
 
 #btnImportDataset {
-  width: 96%;
-  margin-left: 2%;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: auto;
 }
 
 #problemsetsList {
@@ -40,12 +41,4 @@ hr {
   min-height: calc(100vh - 200px);
   max-height: calc(100vh - 200px);
   overflow-y: auto;
-}
-
-#container {
-  background: transparent none !important;
-}
-
-#cameraScreen {
-  background: transparent none !important;
 }

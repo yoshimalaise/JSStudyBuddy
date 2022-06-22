@@ -10,8 +10,8 @@
 
   <div id="container">
     <ion-list id="problemsetsList">
-      <ion-item *ngFor="let filename of fileNames$ | async" (click)="selectFile(filename)">
-        <ion-label>{{filename}}</ion-label>
+      <ion-item class="lstItem" *ngFor="let filename of fileNames$ | async" (click)="selectFile(filename)">
+        <ion-label class="lstItem">{{filename}}</ion-label>
       </ion-item>
     </ion-list>
 

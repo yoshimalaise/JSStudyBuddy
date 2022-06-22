@@ -10,3 +10,14 @@
 #container a {
   text-decoration: none;
 }
+
+
+.btnSet {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: auto;
+}
+
+.btnSet > ion-button {
+  width: 100%;
+}

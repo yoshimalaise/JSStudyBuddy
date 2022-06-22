@@ -1,0 +1,21 @@
+.code-line {
+  overflow-x: auto;
+}
+
+.icon-correct {
+  color: green;
+}
+
+.icon-wrong {
+  color: red;
+}
+
+.snippet {
+  width: 100%;
+  height: 100%;
+}
+
+/** customize the code highlight, hide the language and copy button **/
+::ng-deep .code-toolbar > .toolbar {
+  display: none !important;
+}

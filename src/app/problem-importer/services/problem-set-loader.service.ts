@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { seedData } from '../seed/seed.data';
-import { Problem } from 'src/model/problem.interface';
+import { CodeObject } from 'src/model/problem.interface';
+import { state } from 'src/state/state';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProblemSetLoaderService {
   allFiles$: BehaviorSubject<string[]>;
-  allProblems$: BehaviorSubject<Problem[]>;
+  allProblems$: BehaviorSubject<CodeObject[]>;
   private dirname = 'problem-sets';
 
 
@@ -35,7 +36,8 @@ export class ProblemSetLoaderService {
     });
 
     const data = JSON.parse(f.data);
-    this.allProblems$.next(data.problems);
+    this.allProblems$.next(data.codeObjects);
+    state.codeObjects = data.codeObjects;
   }
 
   async persistProblemset(name: string, data: any) {
