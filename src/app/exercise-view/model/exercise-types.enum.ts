@@ -1,3 +1,4 @@
 export enum ExerciseType {
-  parsons = 'parsons'
+  parsons = 'parsons',
+  commentSlot = 'commentSlot'
 }

@@ -41,6 +41,7 @@
     "@ionic-native/qr-scanner": "^5.36.0",
     "@ionic/angular": "^6.1.9",
     "@ionic/pwa-elements": "^3.1.1",
+    "acorn": "^8.7.1",
     "angular-svg-round-progressbar": "^9.0.0",
     "bootstrap": "^4.5.0",
     "cordova-plugin-badge": "^0.8.8",
