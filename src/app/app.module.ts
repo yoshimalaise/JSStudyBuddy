@@ -10,13 +10,16 @@ import { ProblemImporterModule } from './problem-importer/problem-importer.modul
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { ExerciseViewModule } from './exercise-view/exercise-view.module';
+import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
+
+
 
 @NgModule({
   declarations: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ProblemImporterModule,
     ExerciseViewModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BarcodeScanner],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BarcodeScanner, LocalNotifications],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
