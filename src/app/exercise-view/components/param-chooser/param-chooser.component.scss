@@ -1,0 +1,14 @@
+select, span {
+  display: inline !important;
+}
+
+
+/** customize the code highlight, hide the language and copy button **/
+::ng-deep .code-toolbar > .toolbar {
+  display: none !important;
+}
+::ng-deep .code-line .language-javascript {
+  border-top: none !important;
+  padding: 2px !important;
+  margin: 3px !important;
+}

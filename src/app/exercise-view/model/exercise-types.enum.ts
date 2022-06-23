@@ -1,4 +1,5 @@
 export enum ExerciseType {
   parsons = 'parsons',
-  commentSlot = 'commentSlot'
+  commentSlot = 'commentSlot',
+  paramChooser = 'paramChooser'
 }

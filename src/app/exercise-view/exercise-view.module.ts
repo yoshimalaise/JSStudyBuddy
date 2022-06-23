@@ -8,9 +8,11 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ProgressComponent } from './components/progress/progress.component';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { CommentSlotsComponent } from './components/comment-slots/comment-slots.component';
+import { ParamChooserComponent } from './components/param-chooser/param-chooser.component';
 
 @NgModule({
-  declarations: [ExerciseComponent, ParsonsComponent, ProgressComponent, CommentSlotsComponent],
+  declarations: [ExerciseComponent, ParsonsComponent, ProgressComponent, CommentSlotsComponent,
+    ParamChooserComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,
