@@ -4,6 +4,7 @@ import { CodeObject } from 'src/model/problem.interface';
 import { state } from 'src/state/state';
 import { CommentSlotGeneratorService } from './comment-slot-generator.service';
 import { ExGenerator } from './generator.interface';
+import { ParamChooserGeneratorService } from './param-chooser-generator.service';
 import { ParsonsGeneratorService } from './parsons-generator.service';
 
 @Injectable({
@@ -13,8 +14,9 @@ export class ExerciseGeneratorService {
   generators: ExGenerator[] = [];
   currCodeObject: CodeObject;
 
-  constructor(parsons: ParsonsGeneratorService, comments: CommentSlotGeneratorService) {
-    this.generators =  [parsons, comments];
+  constructor(parsons: ParsonsGeneratorService, comments: CommentSlotGeneratorService,
+    paramChooser: ParamChooserGeneratorService) {
+    this.generators =  [parsons, comments, paramChooser];
    }
 
   nextExercise(): Exercise {
