@@ -1,5 +1,7 @@
 export enum ExerciseType {
   parsons = 'parsons',
   commentSlot = 'commentSlot',
-  paramChooser = 'paramChooser'
+  paramChooser = 'paramChooser',
+  chooseCodeSnippetForFlowchart = 'chooseCodeSnippetForFlowchart',
+  chooseFlowchartForCodeSnippet = 'chooseFlowchartForCodeSnippet'
 }

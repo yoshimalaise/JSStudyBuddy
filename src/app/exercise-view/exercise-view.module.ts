@@ -9,10 +9,14 @@ import { ProgressComponent } from './components/progress/progress.component';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 import { CommentSlotsComponent } from './components/comment-slots/comment-slots.component';
 import { ParamChooserComponent } from './components/param-chooser/param-chooser.component';
+import { PickSnippetForFlowchartComponent } from './components/pick-snippet-for-flowchart/pick-snippet-for-flowchart.component';
+import { PickFlowchartForSnippetComponent } from './components/pick-flowchart-for-snippet/pick-flowchart-for-snippet.component';
+import { JsFlowchartComponent } from './components/js-flowchart/js-flowchart.component';
 
 @NgModule({
   declarations: [ExerciseComponent, ParsonsComponent, ProgressComponent, CommentSlotsComponent,
-    ParamChooserComponent],
+    ParamChooserComponent, PickSnippetForFlowchartComponent, PickFlowchartForSnippetComponent,
+    JsFlowchartComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,

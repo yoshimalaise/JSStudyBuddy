@@ -1,0 +1,36 @@
+ion-slides {
+  height: 100%;
+  width: 90%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.title {
+  font-size: x-large;
+  flex-grow: 5;
+}
+.snippet {
+  flex-grow: 10;
+}
+.selectBtn {
+  height: 40px;
+}
+
+.slide-container {
+  height: 96%;
+  width: 98%;
+  padding-left: 1%;
+  padding-right: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+::ng-deep snippet-highlight, ::ng-deep snippet-highlight > div, ::ng-deep snippet-highlight .dark, ::ng-deep snippet-highlight .code-toolbar,
+::ng-deep snippet-highlight .language-javascript {
+  height: 98%;
+}
+
+::ng-deep  .language-javascript {
+  overflow-x: wrap;
+}

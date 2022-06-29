@@ -1,0 +1,23 @@
+<ion-slides *ngIf="exercise" pager="true">
+  <ion-slide>
+    <div class="slide-container">
+      <ion-label color="primary" class="title">
+        Please select the code snippet matching following flowchart
+      </ion-label>
+  
+      <app-js-flowchart class="flowchart" [snippet]="exercise.originalSnippet">
+      </app-js-flowchart>
+    </div>
+    
+  </ion-slide>
+
+  <ion-slide *ngFor="let e of entries">
+    <div class="slide-container">
+      <snippet-highlight class="snippet" theme="dark" language="javascript" [content]="e.snippet"></snippet-highlight>
+
+      <ion-button class="selectBtn" (click)="select(e)">
+        Select
+      </ion-button>
+    </div>
+  </ion-slide>
+</ion-slides>

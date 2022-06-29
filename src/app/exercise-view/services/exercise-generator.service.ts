@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Exercise } from 'src/model/exercise.interface';
 import { CodeObject } from 'src/model/problem.interface';
 import { state } from 'src/state/state';
+import { ChooseCodeSnippetForFlowchartGeneratorService } from './choose-code-snippet-for-flowchart-generator.service';
+import { ChooseFlowchartGeneratorService } from './choose-flowchart-generator.service';
 import { CommentSlotGeneratorService } from './comment-slot-generator.service';
 import { ExGenerator } from './generator.interface';
 import { ParamChooserGeneratorService } from './param-chooser-generator.service';
@@ -15,8 +17,9 @@ export class ExerciseGeneratorService {
   currCodeObject: CodeObject;
 
   constructor(parsons: ParsonsGeneratorService, comments: CommentSlotGeneratorService,
-    paramChooser: ParamChooserGeneratorService) {
-    this.generators =  [parsons, comments, paramChooser];
+    paramChooser: ParamChooserGeneratorService, flowchartToSnippet: ChooseCodeSnippetForFlowchartGeneratorService,
+    snippetToFlowchart: ChooseFlowchartGeneratorService) {
+    this.generators =  [parsons, comments, paramChooser, flowchartToSnippet, snippetToFlowchart];
    }
 
   nextExercise(): Exercise {
