@@ -27,7 +27,7 @@ export class PickFlowchartForSnippetComponent implements OnInit {
     } else {
       const toast = await this.toastController.create({
         message: 'Incorrect answer',
-        duration: 2000
+        duration: 500
       });
       toast.present();
     }

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import {convertCodeToSvg } from 'js2flowchart';
+import {convertCodeToSvg, createSVGRender, convertCodeToFlowTree } from 'js2flowchart';
+import { defaultTheme } from './js-flowchart.theme';
 
 @Component({
   selector: 'app-js-flowchart',
@@ -10,12 +11,13 @@ export class JsFlowchartComponent implements AfterViewInit {
   @Input() snippet: string;
   @ViewChild('chart') chartContainer;
 
-
   constructor() { }
 
   ngAfterViewInit(): void {
-      console.log('snippet', this.snippet);
-      const svg = convertCodeToSvg(this.snippet);
+      const flowTree = convertCodeToFlowTree(this.snippet);
+      const svgRender = createSVGRender();
+      svgRender.applyTheme(defaultTheme);
+      const svg = svgRender.buildShapesTree(flowTree).print();
       this.chartContainer.nativeElement.innerHTML = svg;
   }
 
