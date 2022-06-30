@@ -1,3 +1,21 @@
 .exercise {
   height: 100%;
 }
+
+/** customize the code highlight, hide the language and copy button **/
+::ng-deep .code-toolbar > .toolbar {
+  display: none !important;
+}
+::ng-deep .code-line .language-javascript {
+  border-top: none !important;
+  padding: 2px !important;
+  margin: 0px !important;
+}
+
+::ng-deep .language-javascript {
+  font-size: x-small;
+}
+
+::ng-deep ion-slide {
+  width: 100%;
+}
