@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title >
+     Progress overview
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="dailygoal entry">
+    <div class="progress-label">
+      <ion-label>Daily goal</ion-label>
+      <ion-label>{{todayCount}}/{{dailyGoal}}</ion-label>
+    </div>
+    <ion-progress-bar color="primary" [value]="dailyProgress"></ion-progress-bar>
+  </div>
+
+  <div class="total entry">
+    <ion-label>Total play time:</ion-label>
+    <ion-label>{{playTime}}</ion-label>
+  </div>
+
+  <app-recent-activity></app-recent-activity>
+
+  <div class="medals entry">
+    <ion-label class="medals-title">Medals:</ion-label><br/>
+    <div class="medal-container" *ngFor="let medal of medals">
+      <div class="medal-image">
+        <img [src]="getImgUrl(medal)">
+      </div>
+
+      <div class="medal">
+        <div class="medal-info">
+          <div>
+            {{medal.name}}
+          </div>
+  
+          <div>
+            {{medal.current}}/{{medal.next}}
+          </div>
+        </div>
+  
+        <div class="medal-progress">
+          <ion-progress-bar color="primary" [value]="medal.current / medal.next"></ion-progress-bar>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

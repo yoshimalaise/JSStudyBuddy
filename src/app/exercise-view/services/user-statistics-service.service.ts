@@ -9,7 +9,7 @@ import { ProblemSetLoaderService } from 'src/app/problem-importer/services/probl
   providedIn: 'root'
 })
 export class UserStatisticsService {
-  private entries: UserEntry[] = [];
+  entries: UserEntry[] = [];
   private dirname = 'user-stats';
 
   constructor(private exService: ExerciseGeneratorService, private problemSetService: ProblemSetLoaderService) {
@@ -33,6 +33,18 @@ export class UserStatisticsService {
   getEntriesFromToday(): UserEntry[] {
     const todayStr = (new Date()).toISOString().split('T')[0];
     return this.entries.filter(e => e.timestamp.toISOString().split('T')[0] === todayStr);
+  }
+
+  /**
+   * returns total playtime in number of seconds
+   */
+  getTotalPlaytime(): number {
+    return this.entries.map(entry => {
+      const parts = entry.duration.split(':');
+      const min = parseInt(parts[1], 10);
+      const sec = parseInt(parts[0], 10);
+      return (min * 60) + sec;
+    }).reduce((acc, current) => acc + current, 0);
   }
 
   private async load() {

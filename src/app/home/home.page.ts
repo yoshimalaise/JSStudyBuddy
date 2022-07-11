@@ -14,4 +14,8 @@ export class HomePage {
     this.router.navigate(['select-problemset']);
   }
 
+  navigateToOverview() {
+    this.router.navigate(['overview']);
+  }
+
 }

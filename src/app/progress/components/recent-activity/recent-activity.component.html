@@ -1,0 +1,14 @@
+<div class="container" *ngIf="calendar">
+  <calendar 
+  [eventSource]="eventSource"
+  [calendarMode]="calendar.mode"
+  [currentDate]="calendar.currentDate"
+  [showEventDetail]="calendar.showEventDetail"
+  [step]="calendar.step"
+  [startingDayWeek]="calendar.startingDayWeek"
+  [startingDayMonth]="calendar.startingDayWeek"
+  [lockSwipes]="calendar.lockSwipes"
+  [eventSource]="calendar.eventSource">
+
+  </calendar>
+</div>
