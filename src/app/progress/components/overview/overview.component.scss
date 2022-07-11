@@ -1,0 +1,60 @@
+.dailygoal {
+  margin-top: 30px;
+}
+
+.entry {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px; 
+}
+.progress-label {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.medals-title {
+  font-size: larger;
+}
+
+.medal {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 8;
+}
+
+.medal-image {
+  width: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  flex-grow: 0;
+  padding-right: 5px;
+}
+.medal-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.medal-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+.medal-progress {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

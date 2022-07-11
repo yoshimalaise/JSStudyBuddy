@@ -11,6 +11,7 @@ import { ProblemImporterModule } from './problem-importer/problem-importer.modul
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { ExerciseViewModule } from './exercise-view/exercise-view.module';
 import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
+import { ProgressModule } from './progress/progress.module';
 
 
 
@@ -18,7 +19,7 @@ import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications
   declarations: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ProblemImporterModule,
-    ExerciseViewModule],
+    ExerciseViewModule, ProgressModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BarcodeScanner, LocalNotifications],
   bootstrap: [AppComponent],
 })
