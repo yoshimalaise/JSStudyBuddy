@@ -32,4 +32,8 @@ export class OverviewComponent implements OnInit {
     }, 100);
   }
 
+  getImgUrl(medal: Medal): string {
+    return `assets/medals/${medal.type}.png`;
+  }
+
 }

@@ -28,7 +28,7 @@ export class MedalService {
     });
 
     return freqs.map(f => ({
-      name: f.type,
+      name: this.getFriendlyName(f.type),
       current: f.count,
       type: this.determineMedalType(f.count),
       next: this.determineNext(f.count)
@@ -52,5 +52,20 @@ export class MedalService {
         return br.lowerBound;
       }
     }
+  }
+
+  private getFriendlyName(type: string): string {
+    const mapping = {
+      'paramChooser': 'param picker',
+      'chooseFlowchartForCodeSnippet': 'flowchart picker',
+      'chooseCodeSnippetForFlowchart': 'snippet picker'
+    };
+
+    const res = mapping[type];
+
+    if (!res) {
+      return type;
+    }
+    return res;
   }
 }
