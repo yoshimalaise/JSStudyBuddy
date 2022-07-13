@@ -3,5 +3,6 @@ export enum ExerciseType {
   commentSlot = 'commentSlot',
   paramChooser = 'paramChooser',
   chooseCodeSnippetForFlowchart = 'chooseCodeSnippetForFlowchart',
-  chooseFlowchartForCodeSnippet = 'chooseFlowchartForCodeSnippet'
+  chooseFlowchartForCodeSnippet = 'chooseFlowchartForCodeSnippet',
+  multipleChoice = 'multipleChoice'
 }

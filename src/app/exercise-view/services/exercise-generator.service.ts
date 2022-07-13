@@ -6,6 +6,7 @@ import { ChooseCodeSnippetForFlowchartGeneratorService } from './choose-code-sni
 import { ChooseFlowchartGeneratorService } from './choose-flowchart-generator.service';
 import { CommentSlotGeneratorService } from './comment-slot-generator.service';
 import { ExGenerator } from './generator.interface';
+import { MultipleChoiceGeneratorService } from './multiple-choice-generator.service';
 import { ParamChooserGeneratorService } from './param-chooser-generator.service';
 import { ParsonsGeneratorService } from './parsons-generator.service';
 
@@ -18,8 +19,8 @@ export class ExerciseGeneratorService {
 
   constructor(parsons: ParsonsGeneratorService, comments: CommentSlotGeneratorService,
     paramChooser: ParamChooserGeneratorService, flowchartToSnippet: ChooseCodeSnippetForFlowchartGeneratorService,
-    snippetToFlowchart: ChooseFlowchartGeneratorService) {
-    this.generators =  [parsons, comments, paramChooser, flowchartToSnippet, snippetToFlowchart];
+    snippetToFlowchart: ChooseFlowchartGeneratorService, multipleChoice: MultipleChoiceGeneratorService) {
+    this.generators =  [parsons, comments, paramChooser, flowchartToSnippet, snippetToFlowchart, multipleChoice, multipleChoice];
    }
 
   nextExercise(): Exercise {
@@ -32,9 +33,7 @@ export class ExerciseGeneratorService {
     return selectedGenerator.generate(selectedCodeObject);
   }
 
-  /**
-   * TODO: use the Leitner principle here instead of random
-   */
+  
   private determineNext(): CodeObject {
     const codeObjects = state.codeObjects;
     // The max leitner box is 5 so there is always 1 entry

@@ -13,6 +13,7 @@
   <app-param-chooser *ngIf="currExercise?.exerciseType === 'paramChooser'" class="exercise" [exercise]="currExercise" (doneEvent)="userFinished()"></app-param-chooser>
   <app-pick-snippet-for-flowchart *ngIf="currExercise?.exerciseType === 'chooseCodeSnippetForFlowchart'" class="exercise" [exercise]="currExercise" (doneEvent)="userFinished()"></app-pick-snippet-for-flowchart>
   <app-pick-flowchart-for-snippet *ngIf="currExercise?.exerciseType === 'chooseFlowchartForCodeSnippet'" class="exercise" [exercise]="currExercise" (doneEvent)="userFinished()"></app-pick-flowchart-for-snippet>
+  <app-multiple-choice *ngIf="currExercise?.exerciseType === 'multipleChoice'" class="exercise" [exercise]="currExercise" (doneEvent)="userFinished()"></app-multiple-choice>
 
 
 

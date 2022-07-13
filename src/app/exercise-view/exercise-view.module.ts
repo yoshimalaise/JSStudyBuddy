@@ -12,11 +12,12 @@ import { ParamChooserComponent } from './components/param-chooser/param-chooser.
 import { PickSnippetForFlowchartComponent } from './components/pick-snippet-for-flowchart/pick-snippet-for-flowchart.component';
 import { PickFlowchartForSnippetComponent } from './components/pick-flowchart-for-snippet/pick-flowchart-for-snippet.component';
 import { JsFlowchartComponent } from './components/js-flowchart/js-flowchart.component';
+import { MultipleChoiceComponent } from './components/multiple-choice/multiple-choice.component';
 
 @NgModule({
   declarations: [ExerciseComponent, ParsonsComponent, ProgressComponent, CommentSlotsComponent,
     ParamChooserComponent, PickSnippetForFlowchartComponent, PickFlowchartForSnippetComponent,
-    JsFlowchartComponent],
+    JsFlowchartComponent, MultipleChoiceComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
     CommonModule,

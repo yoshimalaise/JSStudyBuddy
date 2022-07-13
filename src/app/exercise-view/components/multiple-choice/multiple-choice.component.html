@@ -1,0 +1,33 @@
+<div *ngIf="exercise" class="container">
+  <snippet-highlight #code class="snippet" theme="dark" language="javascript" 
+    [content]="exercise.codeSnippet"></snippet-highlight>
+
+
+  <div class="btn-section">
+    <ion-label>
+      {{ exercise.question}}
+    </ion-label>
+    
+    <ion-list *ngIf="exercise.allowMultiple">
+      <ion-item *ngFor="let x of exercise.answers">
+        <ion-label>{{x.message}}</ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="x.isChecked"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="handleMultipleAnswer()" class="btnConfirm" color="primary">Confirm</ion-button>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="!exercise.allowMultiple">
+      <ion-radio-group>
+        <ion-item (click)="selectedRadio = x.message" *ngFor="let x of exercise.answers">
+          <ion-label>{{x.message}}</ion-label>
+          <ion-radio slot="start" [value]="x.message"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-button (click)="handleSingleAnswer()" class="btnConfirm" color="primary">Confirm</ion-button>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+</div>
