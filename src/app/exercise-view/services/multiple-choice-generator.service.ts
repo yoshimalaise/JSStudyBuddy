@@ -29,11 +29,12 @@ export class MultipleChoiceGeneratorService implements ExGenerator {
     const ast = parse(functionRaw, { ecmaVersion: 9});
 
     const x = this.generateRandomQuestion(ast);
-    const result: MultipleChoiceExercise = {...x, title: (c as FunctionCodeObject).filename, exerciseType: ExerciseType.multipleChoice, codeSnippet: functionRaw};
+    const result: MultipleChoiceExercise = {...x,
+        title: (c as FunctionCodeObject).filename, exerciseType: ExerciseType.multipleChoice, codeSnippet: functionRaw};
     return result;
   }
 
-  // types of questions to support: 
+  // types of questions to support:
 
   // is your function asynchronous? v
   // what is he name of the function? v
@@ -43,9 +44,10 @@ export class MultipleChoiceGeneratorService implements ExGenerator {
   // which of the following variables get reassigned? v
 
   private generateRandomQuestion(ast) {
-    const generators = [this.generateFunctionIsAsyncQuestion, this.generateFunctionArgsQuestion, this.generateFunctionNameQuestion, this.generateWhichAreConstantsQuestion, 
+    const generators = [this.generateFunctionIsAsyncQuestion, this.generateFunctionArgsQuestion,
+        this.generateFunctionNameQuestion, this.generateWhichAreConstantsQuestion,
         this.generateWhichAreDeclaredInLoopInitializersQuestion, this.generateWhichAreReassignedQuestion];
-    return generators[Math.floor(Math.random() * generators.length)](ast)
+    return generators[Math.floor(Math.random() * generators.length)](ast);
   }
 
   private generateFunctionIsAsyncQuestion(ast) {
@@ -62,7 +64,7 @@ export class MultipleChoiceGeneratorService implements ExGenerator {
             { message: 'Yes', isCorrect: isAsync },
             { message: 'No', isCorrect: !isAsync }
         ]
-    }
+    };
   }
 
   private generateFunctionNameQuestion(ast) {
@@ -82,7 +84,7 @@ export class MultipleChoiceGeneratorService implements ExGenerator {
         question: 'What is the name of the function?',
         allowMultiple: false,
         answers: shuffle(possibleAnswers)
-    }
+    };
   }
 
   private generateFunctionArgsQuestion(ast) {
@@ -102,7 +104,7 @@ export class MultipleChoiceGeneratorService implements ExGenerator {
         question: 'Select all the arguments.',
         allowMultiple: true,
         answers: shuffle(possibleAnswers)
-    }
+    };
   }
 
   private generateWhichAreConstantsQuestion(ast) {
@@ -124,7 +126,7 @@ export class MultipleChoiceGeneratorService implements ExGenerator {
         allowMultiple: true,
         answers: shuffle([...constants.map( c => ({message: c, isCorrect: true})),
             ...otherVars.map( c => ({message: c, isCorrect: false}))])
-    }
+    };
   }
 
   private generateWhichAreDeclaredInLoopInitializersQuestion(ast) {
@@ -151,7 +153,7 @@ export class MultipleChoiceGeneratorService implements ExGenerator {
         answers: shuffle([...allVars.filter(v => !declaredInLoopInitializers.includes(v))
                         .map(v => ({message: v, isCorrect: false})),
                 ...declaredInLoopInitializers.map(v => ({message: v, isCorrect: true}))])
-    }
+    };
   }
 
   private generateWhichAreReassignedQuestion(ast) {
@@ -170,10 +172,9 @@ export class MultipleChoiceGeneratorService implements ExGenerator {
         if (type === 'UpdateExpression') {
             reassignedVars.push(node.argument.name);
         }
-        if (type === 'AssignmentExpression') {
-            reassignedVars.push(node.left.name)
+        if (type === 'AssignmentExpression' && node.left.name) {
+            reassignedVars.push(node.left.name);
         }
- 
     });
 
     return {
@@ -183,13 +184,12 @@ export class MultipleChoiceGeneratorService implements ExGenerator {
             ...allVars.filter(v => !reassignedVars.includes(v)).map(v => ({message: v, isCorrect: false})),
             ...reassignedVars.map(v => ({message: v, isCorrect: true}))
         ])
-    }
+    };
   }
 }
 
 
-function shuffle(arr) {
-  return arr.map(s => ({el: s, c: Math.random()}))
+const shuffle = (arr) =>
+  arr.map(s => ({el: s, c: Math.random()}))
           .sort((a, b) => a.c - b.c)
           .map(x => x.el);
-}
