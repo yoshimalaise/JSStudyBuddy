@@ -10,5 +10,11 @@
     margin-left: auto;
     margin-right: auto;
     height: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    margin-top: 20px
+}
+
+::ng-deep snippet-highlight, ::ng-deep snippet-highlight > div, ::ng-deep snippet-highlight .dark, ::ng-deep snippet-highlight .code-toolbar,
+::ng-deep snippet-highlight .language-javascript {
+  height: 98%;
 }
