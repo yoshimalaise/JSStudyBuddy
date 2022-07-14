@@ -2,7 +2,7 @@
 
 android {
   compileOptions {
-      sourceCompatibility JavaVersion.VERSION_1_8
+      sourceCompatibility 11
       targetCompatibility JavaVersion.VERSION_1_8
   }
 }
@@ -21,7 +21,6 @@ dependencies {
 }
 apply from: "../../node_modules/cordova-plugin-badge/src/android/badge.gradle"
 apply from: "../../node_modules/cordova-plugin-local-notification/src/android/build/localnotification.gradle"
-apply from: "../../node_modules/cordova-plugin-qrscanner/src/android/qrscanner.gradle"
 apply from: "../../node_modules/phonegap-plugin-barcodescanner/src/android/barcodescanner.gradle"
 
 if (hasProperty('postBuildExtras')) {
