@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, from } from 'rxjs';
 import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 import { seedData } from '../seed/seed.data';
 import { CodeObject } from 'src/model/problem.interface';
+import { PresentationGroup } from 'src/model/presentation-group.interface';
 import { state } from 'src/state/state';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +13,24 @@ import { state } from 'src/state/state';
 export class ProblemSetLoaderService {
   allFiles$: BehaviorSubject<string[]>;
   allProblems$: BehaviorSubject<CodeObject[]>;
+  allPresentationSets$: Observable<PresentationGroup[]>
   private dirname = 'problem-sets';
 
 
   constructor() {
     this.allProblems$ = new BehaviorSubject([]);
     this.allFiles$ = new BehaviorSubject([]);
+    this.allPresentationSets$ = this.allFiles$.pipe(
+      switchMap(async filenames => Promise.all(filenames.map(async fname => {
+        const file = await Filesystem.readFile({
+          path: `${this.dirname}/${fname}.json`,
+          directory: Directory.Data,
+          encoding: Encoding.UTF8
+        });
+        const data = JSON.parse(file.data);
+        return ({ groupname: fname, presentations: data.presentations });
+      })))
+    );
     this.scanForFiles();
   }
 
@@ -38,11 +52,12 @@ export class ProblemSetLoaderService {
     const data = JSON.parse(f.data);
     this.allProblems$.next(data.codeObjects);
     state.codeObjects = data.codeObjects;
+    state.presentations = data.presentations;
     state.currProblemSet = name;
   }
 
   async persistCurrent() {
-    await this.persistProblemset(state.currProblemSet, {codeObjects: state.codeObjects});
+    await this.persistProblemset(state.currProblemSet, {codeObjects: state.codeObjects, presentations: state.presentations});
   }
 
   async persistProblemset(name: string, data: any) {
