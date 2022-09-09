@@ -12,6 +12,25 @@
 <ion-content [fullscreen]="true">
 
   <div id="container">
+    <ion-accordion-group>
+      <ion-accordion *ngFor="let psGroup of presentationGroups$ | async">
+        <ion-item slot="header" color="light">
+          <ion-label> {{ psGroup.groupname }}</ion-label>
+        </ion-item>
+        <div class="ion-padding" *ngIf="psGroup.presentations.length > 0" slot="content">
+          <div class="presentation-entry" (click)="startPresentation(p)" *ngFor="let p of psGroup.presentations">
+            <div> {{ p.name.replace('.presentation.md', '') }} </div>
+            <div><ion-icon name="albums"></ion-icon></div>
+          </div>
+        </div>
 
+        <div class="ion-padding" *ngIf="psGroup.presentations.length === 0" slot="content">
+          <div class="presentation-entry" *ngFor="let p of psGroup.presentations">
+            <div> No presentations. </div>
+            <div></div>
+          </div>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
   </div>
 </ion-content>

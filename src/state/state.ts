@@ -4,5 +4,6 @@ export const state: AppState = {
   codeObjects: [],
   presentations: [],
   exercise: undefined,
-  currProblemSet: ''
+  currProblemSet: '',
+  selectedPresentation: undefined
 };

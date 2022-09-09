@@ -7,4 +7,5 @@ export interface AppState {
   codeObjects: CodeObject[];
   presentations: Presentation[];
   exercise: Exercise;
+  selectedPresentation: Presentation
 }
