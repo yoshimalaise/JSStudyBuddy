@@ -13,6 +13,7 @@ import { ExerciseViewModule } from './exercise-view/exercise-view.module';
 import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
 import { ProgressModule } from './progress/progress.module';
 import { NgCalendarModule  } from 'ionic2-calendar';
+import { PresentationsModule } from './presentations/presentations.module';
 
 
 
@@ -20,7 +21,7 @@ import { NgCalendarModule  } from 'ionic2-calendar';
   declarations: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ProblemImporterModule,
-    ExerciseViewModule, ProgressModule, NgCalendarModule],
+    ExerciseViewModule, ProgressModule, PresentationsModule, NgCalendarModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, BarcodeScanner, LocalNotifications],
   bootstrap: [AppComponent],
 })
