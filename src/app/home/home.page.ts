@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SpinnerDialog } from '@awesome-cordova-plugins/spinner-dialog';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { ToastController } from '@ionic/angular';
 import { ProblemSetLoaderService } from '../problem-importer/services/problem-set-loader.service';
 
 @Component({
@@ -11,7 +12,8 @@ import { ProblemSetLoaderService } from '../problem-importer/services/problem-se
 })
 export class HomePage {
 
-  constructor(private router: Router, private problemSetLoaderService: ProblemSetLoaderService, private barcodeScanner: BarcodeScanner) {}
+  constructor(private router: Router, private problemSetLoaderService: ProblemSetLoaderService, 
+    private barcodeScanner: BarcodeScanner, private toastController: ToastController) {}
 
   navigateToSelectProblemsetScreen() {
     this.router.navigate(['select-problemset']);
@@ -42,10 +44,20 @@ export class HomePage {
         const data = await reqRes.json();
         this.problemSetLoaderService.persistProblemset(prompt('Collection name') , data);
         SpinnerDialog.hide();
+        const toast = await this.toastController.create({
+          message: 'Content successfully added',
+          duration: 500
+        });
+        toast.present();
       }
     } catch (ex) {
       alert(ex);
       SpinnerDialog.hide();
+      const toast = await this.toastController.create({
+        message: 'Error importing content',
+        duration: 500
+      });
+      toast.present();
     }
   }
 
