@@ -42,7 +42,9 @@ export class HomePage {
           }
         });
         const data = await reqRes.json();
-        this.problemSetLoaderService.persistProblemset(prompt('Collection name') , data);
+        for (const entry of data.entries) {
+          await this.problemSetLoaderService.persistProblemset(entry.name , entry);
+        }
         SpinnerDialog.hide();
         const toast = await this.toastController.create({
           message: 'Content successfully added',

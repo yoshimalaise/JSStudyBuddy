@@ -34,7 +34,9 @@ export class SelectProblemPage {
           }
         });
         const data = await reqRes.json();
-        this.problemSetLoaderService.persistProblemset(prompt('Collection name') , data);
+        for (const entry of data.entries) {
+          await this.problemSetLoaderService.persistProblemset(entry.name , entry);
+        }
         SpinnerDialog.hide();
       }
     } catch (ex) {
