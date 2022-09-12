@@ -30,7 +30,12 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss", "node_modules/reveal.js/dist/reveal.css", "node_modules/reveal.js/dist/theme/league.css"],
+            "styles": [
+              "src/theme/variables.scss", 
+              "src/global.scss", 
+              "node_modules/reveal.js/dist/reveal.css", 
+              "node_modules/reveal.js/dist/theme/league.css",
+              "node_modules/reveal.js/plugin/highlight/monokai.css"],
             "scripts": [],
             "aot": false,
             "vendorChunk": true,
