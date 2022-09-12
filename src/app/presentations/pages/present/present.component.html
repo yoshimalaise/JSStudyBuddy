@@ -12,6 +12,14 @@
 <ion-content [fullscreen]="true">
 
   <div id="container">
-   
+   <div class="reveal">
+      <div class="slides">
+        <section data-markdown>
+          <textarea data-template>
+            {{ state.selectedPresentation.body }}
+          </textarea>
+        </section>
+      </div>
+   </div>
   </div>
 </ion-content>
