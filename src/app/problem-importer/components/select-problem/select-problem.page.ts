@@ -16,7 +16,7 @@ export class SelectProblemPage {
 
   constructor(private problemSetLoaderService: ProblemSetLoaderService, private barcodeScanner: BarcodeScanner,
     private router: Router) {
-    this.fileNames$ = problemSetLoaderService.allFiles$;
+    this.fileNames$ = problemSetLoaderService.allFilesWithExercises$;
   }
 
   /**

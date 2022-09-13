@@ -12,7 +12,7 @@
 <ion-content id='cameraScreen' [fullscreen]="true">
 
   <div id="container">
-    <ion-list id="problemsetsList">
+    <ion-list id="problemsetsList">  
       <ion-item class="lstItem" *ngFor="let filename of fileNames$ | async" (click)="selectFile(filename)">
         <ion-label class="lstItem">{{filename}}</ion-label>
       </ion-item>

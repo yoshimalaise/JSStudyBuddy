@@ -5,7 +5,7 @@ import { seedData } from '../seed/seed.data';
 import { CodeObject } from 'src/model/problem.interface';
 import { PresentationGroup } from 'src/model/presentation-group.interface';
 import { state } from 'src/state/state';
-import { map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +14,7 @@ export class ProblemSetLoaderService {
   allFiles$: BehaviorSubject<string[]>;
   allProblems$: BehaviorSubject<CodeObject[]>;
   allPresentationSets$: Observable<PresentationGroup[]>
+  allFilesWithExercises$: Observable<string[]>;
   private dirname = 'problem-sets';
 
 
@@ -30,6 +31,19 @@ export class ProblemSetLoaderService {
         const data = JSON.parse(file.data);
         return ({ groupname: fname, presentations: data.presentations });
       })))
+    );
+
+    this.allFilesWithExercises$ = this.allFiles$.pipe(
+      switchMap(async filenames => Promise.all(filenames.map(async fname => {
+        const file = await Filesystem.readFile({
+          path: `${this.dirname}/${fname}.json`,
+          directory: Directory.Data,
+          encoding: Encoding.UTF8
+        });
+        const data = JSON.parse(file.data);
+        return data.codeObjects?.length > 0 ? fname: undefined;
+      }))),
+      map(filenames => filenames.filter(f => f !== undefined)),
     );
     this.scanForFiles();
   }
