@@ -31,7 +31,7 @@ export class CommentSlotGeneratorService implements ExGenerator {
             comments.push({isBlock, text, start});
         },
       });
-      return comments.length >= 3;
+      return comments.length >= 3 && comments.length <= 8;
     }catch{
       return false;
     }

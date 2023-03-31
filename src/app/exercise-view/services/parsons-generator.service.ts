@@ -14,7 +14,9 @@ export class ParsonsGeneratorService implements ExGenerator{
   constructor() { }
 
   isApplicable(c: CodeObject): boolean {
-    return c.type === CodeObjectType.function;
+    return c.type === CodeObjectType.function 
+      && (c as FunctionCodeObject).lines.length > 2
+      && (c as FunctionCodeObject).lines.length < 30;
   }
 
   generate(c: CodeObject): Exercise {
