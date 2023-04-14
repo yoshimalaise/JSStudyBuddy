@@ -4,6 +4,8 @@ import { SpinnerDialog } from '@awesome-cordova-plugins/spinner-dialog';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { ToastController } from '@ionic/angular';
 import { ProblemSetLoaderService } from '../problem-importer/services/problem-set-loader.service';
+import { ModalController } from '@ionic/angular';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,8 @@ import { ProblemSetLoaderService } from '../problem-importer/services/problem-se
 export class HomePage {
 
   constructor(private router: Router, private problemSetLoaderService: ProblemSetLoaderService, 
-    private barcodeScanner: BarcodeScanner, private toastController: ToastController) {}
+    private barcodeScanner: BarcodeScanner, private toastController: ToastController,
+    private modalCtrl: ModalController) {}
 
   navigateToSelectProblemsetScreen() {
     this.router.navigate(['select-problemset']);
@@ -25,6 +28,13 @@ export class HomePage {
 
   navigateToSelectPresentationsScreen() {
     this.router.navigate(['select-presentation']);
+  }
+
+  async showPrivacyPolicy() {
+    const modal = await this.modalCtrl.create({
+      component: PrivacyPolicyComponent,
+    });
+    modal.present();
   }
 
   /**
